@@ -38,8 +38,9 @@ def isJson(myjson):
 app = Celery('tasks', backend='rpc://', broker='pyamqp://')
 
 @app.task
-def countPronouns(file):
-	my_dir = "/Users/Alex/Dropbox/Programmering/Cloud/Lab3/data/"
+def countPronouns(dir, file):
+	my_dir = dir
+	#"/Users/Alex/Dropbox/Programmering/Cloud/Lab3/data/"
 	os.chdir(my_dir)
 
 	with open(file) as json_data:
