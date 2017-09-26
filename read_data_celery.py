@@ -51,4 +51,4 @@ def countPronouns(dir, file):
 				cleaned_string = cleanString(d['text'])
 				
 				registerPronoun(cleaned_string, pronoun_count)
-		print(pronoun_count)
+		return pronoun_count
