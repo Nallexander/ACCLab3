@@ -1,3 +1,4 @@
+from celery import Celery
 import os
 import json
 
@@ -34,25 +35,19 @@ def isJson(myjson):
     return False
   return True
 
+app = Celery('tasks', backend='rpc://', broker='pyamqp://')
 
+@app.task
+def countPronouns(file):
+	my_dir = "/Users/Alex/Dropbox/Programmering/Cloud/Lab3/data/"
+	os.chdir(my_dir)
 
-my_dir = "/Users/Alex/Dropbox/Programmering/Cloud/Lab3/data/"
-os.chdir(my_dir)
-
-with open('f1c47aa7-5b69-4467-897c-24151649bcf4') as json_data:
-	pronoun_count = {'han': 0, 'hon': 0, 'den': 0, 'det': 0, 'denna': 0, 'hen': 0}
-	for json_line in json_data:
-		if isJson(json_line):
-			d = json.loads(json_line)
-			cleaned_string = cleanString(d['text'])
-			
-			registerPronoun(cleaned_string, pronoun_count)
-	print(pronoun_count)
-
-
-
-	# print(d['text'].find(' hen '))
-
-
-
-
+	with open(file) as json_data:
+		pronoun_count = {'han': 0, 'hon': 0, 'den': 0, 'det': 0, 'denna': 0, 'hen': 0}
+		for json_line in json_data:
+			if isJson(json_line):
+				d = json.loads(json_line)
+				cleaned_string = cleanString(d['text'])
+				
+				registerPronoun(cleaned_string, pronoun_count)
+		print(pronoun_count)
