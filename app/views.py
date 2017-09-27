@@ -15,7 +15,7 @@ def index():
 	# return pronouns
 	# sleep()
 	# while not pronouns.ready():
-	# 	sleep(0.5)
+	sleep(8)
 	if pronouns.ready():
 		return("Klar")
 	else:
