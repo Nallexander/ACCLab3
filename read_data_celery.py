@@ -37,6 +37,18 @@ def isJson(myjson):
 
 app = Celery('tasks', backend='rpc://', broker='pyamqp://')
 
+def updateJsonFile(pronoun_count):
+	with open('output.json', 'r') as json_output:
+		data = json.load(json_output)
+	data['han'] = pronoun_count['han'] + data['han']
+	data['hon'] = pronoun_count['hon'] + data['hon']
+	data['den'] = pronoun_count['den'] + data['den']
+	data['det'] = pronoun_count['det'] + data['det']
+	data['denna'] = pronoun_count['denna'] + data['denna']
+	data['hen'] = pronoun_count['hen'] + data['hen']
+	with open('output.json', 'w+') as json_output:
+		json.dump(data, json_output)
+
 @app.task
 def countPronouns(dir, file):
 	my_dir = dir
@@ -51,4 +63,5 @@ def countPronouns(dir, file):
 				cleaned_string = cleanString(d['text'])
 				
 				registerPronoun(cleaned_string, pronoun_count)
-		return pronoun_count
+	updateJsonFile(pronoun_count)
+	return pronoun_count
