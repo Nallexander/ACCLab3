@@ -1,6 +1,22 @@
+from app import app
+from flask import Flask, jsonify, request
 from read_data_celery import countPronouns
-pronouns = countPronouns.delay('f1c47aa7-5b69-4467-897c-24151649bcf4')
-while True:
+from time import sleep
+
+def index():
+	data = request.get_json()
+	file = data.get('file')
+	print('hej')
+	pronouns = countPronouns.delay(file)
+	print('hoj')
+	# print(pronouns)
+	# return pronouns
+	# sleep()
+	# while not pronouns.ready():
+	sleep(8)
 	if pronouns.ready():
-		break
-print(pronouns.get())
+		result = pronouns.get(timeout=1)
+		print(result)
+		return("Klar")
+	else:
+		return("Inte klar")
