@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request
 from read_data_celery import countPronouns
 from time import sleep
+import json
 
 app = Flask(__name__)
 
