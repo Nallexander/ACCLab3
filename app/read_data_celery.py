@@ -63,7 +63,7 @@ def countPronouns(file):
 				cleaned_string = cleanString(d['text'])
 				
 				registerPronoun(cleaned_string, pronoun_count)
-	my_dir = '/home/ubuntu/ACCLab3'
-	os.chdir(my_dir)
-	updateJsonFile(pronoun_count)
+	# my_dir = '/home/ubuntu/ACCLab3'
+	# os.chdir(my_dir)
+	# updateJsonFile(pronoun_count)
 	return pronoun_count
