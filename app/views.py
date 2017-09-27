@@ -20,7 +20,7 @@ def index():
 	print(pronouns.ready())
 	result = pronouns.result
 	print(result)
-	return(json.dumps(result)
+	return(json.dumps(result))
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0', debug=True)
