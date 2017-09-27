@@ -15,6 +15,7 @@ def index():
 	while pronouns.ready() == False:
 		sleep(0.5)
 	print('klar')
+	print(pronouns.ready())
 	result = pronouns.result
 	print(result)
-	return(result)
+	return('hej')
