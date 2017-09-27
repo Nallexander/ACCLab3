@@ -12,7 +12,7 @@ def index():
 	# print(pronouns)
 	# return pronouns
 	# sleep()
-	while not pronouns.ready():
+	while pronouns.ready() == False:
 		sleep(0.5)
 	print('klar')
 	result = pronouns.result
