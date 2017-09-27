@@ -1,19 +1,17 @@
 from app import app
 from flask import Flask, jsonify, request
 from read_data_celery import countPronouns
+from time import sleep
 
 @app.route('/', methods=['GET'])
 @app.route('/index/', methods=['GET'])
 def index():
 	data = request.get_json()
 	file = data.get('file')
-	print(file)
 	pronouns = countPronouns.delay(file)
 	# print(pronouns)
 	# return pronouns
 
-	while True:
-		print pronouns.ready()
-		if pronouns.ready():
-			break
+	while not pronouns.ready():
+		sleep(0.5)
 	return(pronouns.get())
