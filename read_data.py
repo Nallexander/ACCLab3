@@ -1,16 +1,6 @@
 import os
 import json
 
-
-# def cleanString(string):
-# 	filtered = string.replace(',', '')
-# 	filtered = filtered.replace('.', '')
-# 	filtered = filtered.replace('!', '')
-# 	filtered = filtered.replace('?', '')
-# 	filtered = filtered.replace(')', '')
-# 	filtered = filtered.lower()
-# 	return filtered
-
 def registerPronoun(string, pronoun_count):
 	han = len([x for x in string.split() if x == 'han'])
 	hon = len([x for x in string.split() if x == 'hon'])
