@@ -2,6 +2,8 @@ from flask import Flask, jsonify, request
 from read_data_celery import countPronouns
 from time import sleep
 
+app = Flask(__name__)
+
 @app.route('/', methods=['GET'])
 @app.route('/index/', methods=['GET'])
 def index():
