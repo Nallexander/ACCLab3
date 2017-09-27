@@ -14,11 +14,8 @@ def index():
 	# print(pronouns)
 	# return pronouns
 	# sleep()
-	# while not pronouns.ready():
-	sleep(8)
-	if pronouns.ready():
+	while not pronouns.ready():
+		sleep(0.5)
 		result = pronouns.result
 		print(result)
-		return("Klar")
-	else:
-		return("Inte klar")
+		return(result)
