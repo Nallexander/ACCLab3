@@ -13,7 +13,7 @@ def index():
 	print('hoj')
 	# print(pronouns)
 	# return pronouns
-
-	while not pronouns.ready():
-		sleep(0.5)
+	sleep(10)
+	# while not pronouns.ready():
+	# 	sleep(0.5)
 	return(pronouns.get())
