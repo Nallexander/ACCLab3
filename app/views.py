@@ -1,6 +1,6 @@
 from app import app
 from flask import Flask, jsonify, request
-from ... import read_data_celery
+from .. import read_data_celery
 from time import sleep
 
 @app.route('/', methods=['GET'])
