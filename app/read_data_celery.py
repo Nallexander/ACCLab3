@@ -35,7 +35,7 @@ def isJson(myjson):
     return False
   return True
 
-app = Celery('tasks', result_backend='rpc://', broker='pyamqp://')
+app = Celery('tasks', backend='rpc://', broker='pyamqp://')
 
 def updateJsonFile(pronoun_count):
 	with open('output.json', 'r') as json_output:
