@@ -15,4 +15,4 @@ def index():
 		print pronouns.ready()
 		if pronouns.ready():
 			break
-	return('pronouns')
+	return(pronouns.get())
