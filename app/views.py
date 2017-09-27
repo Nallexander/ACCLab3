@@ -16,4 +16,4 @@ def index():
 	# sleep()
 	# while not pronouns.ready():
 	# 	sleep(0.5)
-	return(pronouns.ready()
+	return(pronouns.ready())
