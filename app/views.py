@@ -11,3 +11,4 @@ def index():
 	# print(pronouns)
 	# return pronouns
 	print(file)
+	return(file)
