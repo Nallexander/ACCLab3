@@ -20,3 +20,6 @@ def index():
 	result = pronouns.result
 	print(result)
 	return('hej')
+
+if __name__ == '__main__':
+	app.run(host='0.0.0.0', debug=True)
