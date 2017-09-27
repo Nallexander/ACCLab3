@@ -8,7 +8,9 @@ from time import sleep
 def index():
 	data = request.get_json()
 	file = data.get('file')
+	print('hej')
 	pronouns = countPronouns.delay(file)
+	print('hoj')
 	# print(pronouns)
 	# return pronouns
 
