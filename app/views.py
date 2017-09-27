@@ -10,4 +10,5 @@ def index():
 	pronouns = countPronouns.delay(file)
 	# print(pronouns)
 	# return pronouns
-	return(pronouns)
+	if pronouns.ready():
+		return(pronouns)
