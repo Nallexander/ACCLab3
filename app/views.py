@@ -11,6 +11,7 @@ def index():
 	# print(pronouns)
 	# return pronouns
 
-	while not pronouns.ready():
-		true
+	while True:
+		if pronouns.ready():
+			break
 	return(pronouns)
