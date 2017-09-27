@@ -7,4 +7,3 @@ def index():
 	request_json = request.get_json()
 	message = request_json.get('message')
 	print(message)
-    return message
