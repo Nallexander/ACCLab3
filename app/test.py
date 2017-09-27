@@ -1,4 +1,3 @@
-from app import app
 from flask import Flask, jsonify, request
 from read_data_celery import countPronouns
 from time import sleep
