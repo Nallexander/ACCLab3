@@ -50,8 +50,8 @@ def updateJsonFile(pronoun_count):
 		json.dump(data, json_output)
 
 @app.task
-def countPronouns(dir, file):
-	my_dir = dir
+def countPronouns(file):
+	my_dir = '/home/ubuntu/ACCLab3/data'
 	#"/Users/Alex/Dropbox/Programmering/Cloud/Lab3/data/"
 	os.chdir(my_dir)
 

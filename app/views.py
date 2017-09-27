@@ -2,8 +2,9 @@ from app import app
 from flask import Flask, jsonify, request
 
 @app.route('/')
-@app.route('/index/<uuid>', methods=['POST'])
+@app.route('/index/<uuid>', methods=['GET'])
 def index():
-	request_json = request.get_json()
-	message = request_json.get('message')
+	data = request.get_json()
+	file = data.get('file')
+	
 	return message
