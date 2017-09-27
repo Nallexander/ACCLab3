@@ -8,7 +8,7 @@ def index():
 	data = request.get_json()
 	file = data.get('file')
 	print('hej')
-	pronouns = app.read_data_celery.countPronouns.delay(file)
+	pronouns = read_data_celery.countPronouns.delay(file)
 	print('hoj')
 	# print(pronouns)
 	# return pronouns
