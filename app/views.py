@@ -18,6 +18,7 @@ def index():
 	sleep(8)
 	if pronouns.ready():
 		result = pronouns.get(timeout=1)
-		return(result)
+		print(result)
+		return("Klar")
 	else:
 		return("Inte klar")
