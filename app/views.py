@@ -16,6 +16,6 @@ def index():
 	# sleep()
 	while not pronouns.ready():
 		sleep(0.5)
-		result = pronouns.result
-		print(result)
-		return(result)
+	result = pronouns.result
+	print(result)
+	return(result)
