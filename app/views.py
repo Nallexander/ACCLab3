@@ -3,8 +3,7 @@ from flask import Flask, jsonify, request
 
 @app.route('/')
 @app.route('/index/<uuid>', methods=['POST'])
-def index(uuid):
+def index():
 	request_json = request.get_json()
 	message = request_json.get('message')
-	print(uuid)
-	return uuid
+	return message
