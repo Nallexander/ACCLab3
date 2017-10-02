@@ -28,6 +28,11 @@ app = Flask(__name__)
 # 2c4d5fa5-0495-4a19-8567-ca1d17dd15b0  5a1bb59f-efba-447f-80dd-5034b5771b22  8e1eed1c-277f-4b10-8788-1ab8c371b1fb  cad86632-c0fe-4ff8-9d11-c17654e57b9f
 # 2c4ee64d-d125-4a9f-9962-1acf4e0ad264  5b76a848-eb5e-4974-8b6b-b372e0382f9c  8fb8a27b-18fd-4ffe-8f56-3b808cb66cd7  cc12933c-a8d5-4fc4-8bef-56c214986d8a'}
 
+def addDicts(result_dict, add_dict):
+	for param in add_dict:
+		result_dict[param] += add_dict[param]
+	return result_dict
+
 @app.route('/', methods=['GET'])
 @app.route('/index/', methods=['GET'])
 def index():
@@ -36,18 +41,21 @@ def index():
 	my_dir = '/home/ubuntu/ACCLab3/data'
 	#"/Users/Alex/Dropbox/Programmering/Cloud/Lab3/data/"
 	os.chdir(my_dir)
+	i = 0
 	for filename in os.listdir(my_dir):
-		pronouns = countPronouns.delay(filename)
+		pronouns[i] = countPronouns.delay(filename)
+		i += 1
 	# print(pronouns)
 	# return pronouns
 	# sleep()
-	while pronouns.ready() == False:
+	while pronouns[i].ready() == False:
 		sleep(0.5)
-	print('klar')
-	print(pronouns.ready())
-	result = pronouns.result
-	print(result)
-	return(json.dumps(result))
+
+	result_dict = {'han': 0, 'hon': 0, 'den': 0, 'det': 0, 'denna': 0, 'hen': 0}
+	for pronoun_dict in pronouns:
+		addDicts(result_dict, pronoun_dict.result)
+	print(result_dict)
+	return(json.dumps(result_dict))
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0', debug=True)
