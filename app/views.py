@@ -42,6 +42,7 @@ def index():
 	#"/Users/Alex/Dropbox/Programmering/Cloud/Lab3/data/"
 	os.chdir(my_dir)
 	i = 0
+	pronouns = []
 	for filename in os.listdir(my_dir):
 		pronouns[i] = countPronouns.delay(filename)
 		i += 1
