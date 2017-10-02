@@ -35,7 +35,7 @@ def index():
 	my_dir = '/home/ubuntu/ACCLab3/data'
 	#"/Users/Alex/Dropbox/Programmering/Cloud/Lab3/data/"
 	os.chdir(my_dir)
-	for filename in os.listdir(my_dir)
+	for filename in os.listdir(my_dir):
 		pronouns = countPronouns.delay(filename)
 	# print(pronouns)
 	# return pronouns
