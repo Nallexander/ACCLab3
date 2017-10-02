@@ -8,9 +8,9 @@ app = Flask(__name__)
 @app.route('/', methods=['GET'])
 @app.route('/index/', methods=['GET'])
 def index():
-	data = request.get_json()
-	jsonfile = data.get('file')
-	pronouns = countPronouns.delay(jsonfile)
+	# data = request.get_json()
+	# jsonfile = data.get('file')
+	pronouns = countPronouns.delay('5b76a848-eb5e-4974-8b6b-b372e0382f9c')
 	# print(pronouns)
 	# return pronouns
 	# sleep()
