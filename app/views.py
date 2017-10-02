@@ -44,12 +44,12 @@ def index():
 	i = 0
 	pronouns = []
 	for filename in os.listdir(my_dir):
-		pronouns[i] = countPronouns.delay(filename)
+		pronouns.append(countPronouns.delay(filename))
 		i += 1
 	# print(pronouns)
 	# return pronouns
 	# sleep()
-	while pronouns[i].ready() == False:
+	while pronouns[i-1].ready() == False:
 		sleep(0.5)
 
 	result_dict = {'han': 0, 'hon': 0, 'den': 0, 'det': 0, 'denna': 0, 'hen': 0}
