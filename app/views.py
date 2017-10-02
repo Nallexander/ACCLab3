@@ -53,7 +53,7 @@ def index():
 
 	result_dict = {'han': 0, 'hon': 0, 'den': 0, 'det': 0, 'denna': 0, 'hen': 0}
 	for pronoun_dict in pronouns:
-		addDicts(result_dict, pronoun_dict.result)
+		result_dict = addDicts(result_dict, pronoun_dict.result)
 	print(result_dict)
 	return(json.dumps(result_dict))
 
