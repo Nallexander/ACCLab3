@@ -33,6 +33,32 @@ def addDicts(result_dict, add_dict):
 		result_dict[param] += add_dict[param]
 	return result_dict
 
+@app.route('/pronouns-short/', methods=['GET'])
+def index():
+	# data = request.get_json()
+	# jsonfile = data.get('file')
+	my_dir = '/home/ubuntu/ACCLab3/data'
+	#"/Users/Alex/Dropbox/Programmering/Cloud/Lab3/data/"
+	os.chdir(my_dir)
+	i = 0
+	pronouns = []
+	for filename in os.listdir(my_dir):
+		pronouns.append(countPronouns.delay(filename))
+		i += 1
+		if i == 5:
+			break
+	# print(pronouns)
+	# return pronouns
+	# sleep()
+	while pronouns[i-1].ready() == False:
+		sleep(0.5)
+
+	result_dict = {'han': 0, 'hon': 0, 'den': 0, 'det': 0, 'denna': 0, 'hen': 0}
+	for pronoun_dict in pronouns:
+		result_dict = addDicts(result_dict, pronoun_dict.get())
+	print(result_dict)
+	return(json.dumps(result_dict))
+
 @app.route('/pronouns/', methods=['GET'])
 def index():
 	# data = request.get_json()
