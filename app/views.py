@@ -34,7 +34,7 @@ def addDicts(result_dict, add_dict):
 	return result_dict
 
 @app.route('/pronouns-short/', methods=['GET'])
-def index():
+def index2():
 	# data = request.get_json()
 	# jsonfile = data.get('file')
 	my_dir = '/home/ubuntu/ACCLab3/data'
