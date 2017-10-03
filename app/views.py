@@ -35,6 +35,7 @@ def addDicts(result_dict, add_dict):
 
 @app.route('/', methods=['GET'])
 @app.route('/index/', methods=['GET'])
+@app.route('/pronouns/')
 def index():
 	# data = request.get_json()
 	# jsonfile = data.get('file')
