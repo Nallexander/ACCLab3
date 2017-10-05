@@ -75,6 +75,7 @@ def index():
 	result_dict = {'han': 0, 'hon': 0, 'den': 0, 'det': 0, 'denna': 0, 'hen': 0}
 	for pronoun_dict in pronouns:
 		if pronoun_dict.ready():
+			print(pronoun_dict + "ready")
 			result_dict = addDicts(result_dict, pronoun_dict.get())
 	
 	print(result_dict)
