@@ -35,7 +35,7 @@ def isJson(myjson):
     return False
   return True
 
-app = Celery('tasks', backend='rpc://', broker='amqp://myuser:mypassword@129.16.125.252:5672/myvhost')
+app = Celery('tasks', backend='rpc://', broker='amqp://myuser:mypassword@localhost:5672/myvhost')
 
 def updateJsonFile(pronoun_count):
 	with open('output.json', 'r') as json_output:
@@ -67,3 +67,4 @@ def countPronouns(file):
 	# os.chdir(my_dir)
 	# updateJsonFile(pronoun_count)
 	return pronoun_count
+
