@@ -71,15 +71,12 @@ def index():
 	for filename in os.listdir(my_dir):
 		pronouns.append(countPronouns.delay(filename))
 		i += 1
-	# print(pronouns)
-	# return pronouns
-	# sleep()
-	while pronouns[i-1].ready() == False:
-		sleep(0.5)
-
+	
 	result_dict = {'han': 0, 'hon': 0, 'den': 0, 'det': 0, 'denna': 0, 'hen': 0}
 	for pronoun_dict in pronouns:
-		result_dict = addDicts(result_dict, pronoun_dict.get())
+		if pronoun_dict.ready():
+			result_dict = addDicts(result_dict, pronoun_dict.get())
+	
 	print(result_dict)
 	return(json.dumps(result_dict))
 
